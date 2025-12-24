@@ -1,73 +1,49 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
-app.use(bodyParser.json());
+const port = process.env.PORT || 5000;
+
 app.use(cors());
+app.use(express.json());
 
 let bookings = [];
 
-const OWNER_EMAIL = 'thenightgardenstay@gmail.com';
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'YOUR_EMAIL@gmail.com',
-    pass: 'YOUR_APP_PASSWORD'
-  }
+// Create booking
+app.post("/api/bookings", (req, res) => {
+  const b = req.body;
+  const newBooking = {
+    id: Date.now().toString(),
+    ...b,
+    status: b.status || "pending",
+    time: new Date().toLocaleString()
+  };
+  bookings.push(newBooking);
+  res.status(201).json(newBooking);
 });
 
-app.post('/api/book', async (req, res) => {
-  const { name, email, phone, checkin, checkout, guests, message } = req.body;
-  const booking = { id: Date.now(), name, email, phone, checkin, checkout, guests, message, time: new Date().toLocaleString() };
-  bookings.push(booking);
-
-  try {
-    await transporter.sendMail({
-      from: 'YOUR_EMAIL@gmail.com',
-      to: OWNER_EMAIL,
-      subject: 'New Booking Request - The Night Garden Stay',
-      text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Check-in: ${checkin}
-Check-out: ${checkout}
-Guests: ${guests}
-Message: ${message}
-Submitted: ${booking.time}
-      `
-    });
-    res.status(200).json({ success: true, booking });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ success: false });
-  }
+// Get all bookings
+app.get("/api/bookings", (req, res) => {
+  res.json(bookings);
 });
 
-app.get('/api/bookings', (req, res) => res.json(bookings));
-
-app.listen(5000, () => console.log('Server running on port 5000'));
-const Razorpay = require('razorpay');
-
-const razorpay = new Razorpay({
-  key_id: 'YOUR_KEY_ID',
-  key_secret: 'YOUR_KEY_SECRET'
+// Update booking status
+app.patch("/api/bookings/:id", (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  const idx = bookings.findIndex(b => b.id === id);
+  if (idx === -1) return res.status(404).json({ error: "Not found" });
+  bookings[idx].status = status;
+  res.json(bookings[idx]);
 });
 
-app.post('/api/create-order', async (req, res) => {
-  try {
-    const options = {
-      amount: 2000 * 100, // ₹2000
-      currency: 'INR',
-      receipt: 'booking_' + Date.now()
-    };
+// Delete booking
+app.delete("/api/bookings/:id", (req, res) => {
+  const { id } = req.params;
+  bookings = bookings.filter(b => b.id !== id);
+  res.json({ success: true });
+});
 
-    const order = await razorpay.orders.create(options);
-    res.json(order);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Order creation failed' });
-  }
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
