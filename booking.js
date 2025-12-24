@@ -305,25 +305,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   try {
-    const res = await fetch(`${API_BASE}/api/bookings`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(booking)
-    });
+  const res = await fetch("http://localhost:5000/api/bookings", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(booking)
+  });
 
-    if (!res.ok) throw new Error("Booking API failed");
+  if (!res.ok) throw new Error("Booking API failed");
 
-    notify("🎉 Booking request submitted successfully!");
+  notify("🎉 Booking request submitted successfully!");
 
-    bookingForm.reset();
-    submitBtn.disabled = true;
-    payBtn.disabled = true;
-    paymentDone = false;
+  // reset form / UI
+  bookingForm.reset();
+  submitBtn.disabled = true;
+  payBtn.disabled = true;
+  paymentDone = false;
 
-  } catch (err) {
-    console.error(err);
-    notify("Booking failed. Please try again.", true);
-  }
+} catch (err) {
+  console.error("Booking submission failed:", err);
+  notify("Booking failed — please try again", true);
+}
+
 });
 
   // notify other tabs (admin) that bookings changed
