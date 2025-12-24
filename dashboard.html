@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | The Night Garden Stay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">🌙 The Night Garden Stay - Admin</div>
+    <button onclick="logout()" class="logout">Logout</button>
+  </header>
+
+  <!-- DASHBOARD METRICS -->
+  <section class="metrics">
+    <div>Total Bookings: <span id="totalBookings">0</span></div>
+    <div>Total Leads: <span id="totalLeads">0</span></div>
+    <div>Approved Reviews: <span id="approvedReviews">0</span></div>
+  </section>
+
+  <!-- BOOKINGS SECTION -->
+  <section class="dashboard-section">
+    <h2>Bookings</h2>
+    <div class="actions">
+      <button onclick="exportCSV('bookings')" class="export">Export Bookings</button>
+      <button onclick="exportCSV('leads')" class="export">Export Leads</button>
+    </div>
+    <div id="bookingsList">
+      <table id="bookingsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>Guests</th>
+            <th>Message</th>
+            <th>Payment Amt</th>
+            <th>Payment Status</th>
+            <th>Aadhaar</th>
+            <th>Proof</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="dashboard-section">
+    <h2>Pending Reviews</h2>
+    <div id="pendingReviews"></div>
+  </section>
+
+  <!-- GALLERY MANAGEMENT SECTION -->
+  <section class="dashboard-section">
+    <h2>Gallery Management</h2>
+    <div class="gallery-upload">
+      <input type="file" id="imageInput" accept="image/*">
+      <input type="text" id="imageTitle" placeholder="Image title">
+      <button onclick="addImage()">Upload Image</button>
+    </div>
+    <div id="galleryAdminList"></div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <script src="auth.js"></script>
+  <script src="adminBookings.js"></script> <!-- new script to fetch bookings from backend -->
+  <script src="reviews.js"></script>
+  <script src="gallery.js"></script>
+  <script src="export.js"></script>
+  <script src="dashboard.js"></script>
+
+</body>
+</html>

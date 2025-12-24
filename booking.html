@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Stay | The Night Garden Stay</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/booking.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet">
+  
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">🌙 Night Garden Stay</div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="availability.html">Availability</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contacts.html">Contact</a>
+    <a href="booking.html" class="btn">Book Now</a>
+  </nav>
+</header>
+
+<!-- BOOKING SECTION -->
+<section class="booking-section">
+  <h1>Reserve Your Night</h1>
+  <p class="subtitle">Quiet nights. Garden lights. Peaceful memories.</p>
+
+  <form id="bookingForm" class="booking-form" novalidate>
+
+  <!-- FULL NAME -->
+  <div class="form-group">
+    <label for="fullName">Full Name</label>
+    <input
+      type="text"
+      id="fullName"
+      name="fullName"
+      placeholder="Your name"
+      required
+    />
+  </div>
+
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="you@email.com"
+      required
+    />
+  </div>
+
+  <!-- PHONE -->
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      placeholder="+91 XXXXX XXXXX"
+      required
+    />
+  </div>
+
+  <!-- DATES -->
+  <div class="form-row">
+    <div class="form-group">
+      <label for="checkin">Check-in</label>
+      <input
+        type="date"
+        id="checkin"
+        name="checkin"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="checkout">Check-out</label>
+      <input
+        type="date"
+        id="checkout"
+        name="checkout"
+        required
+      />
+    </div>
+  </div>
+
+  <!-- GUESTS -->
+  <div class="form-group">
+    <label for="guests">No. of Guests</label>
+    <select id="guests" name="guests" required>
+      <option value="">Select guests</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5+">5+</option>
+    </select>
+  </div>
+
+  <!-- MESSAGE -->
+  <div class="form-group">
+    <label for="message">Message (Optional)</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Any special requests?"
+      rows="4"
+    ></textarea>
+  </div>
+
+  <!-- AADHAAR -->
+  <div class="form-group">
+    <label for="aadhaarFile">
+      Aadhaar (Upload photo of Aadhaar card)
+    </label>
+    <input
+      type="file"
+      id="aadhaarFile"
+      name="aadhaarFile"
+      accept="image/*"
+      required
+    />
+    <small>
+      Please upload a clear photo of Aadhaar (front).
+    </small>
+  </div>
+
+  <!-- CONSENT -->
+  <div class="form-group checkbox-group">
+    <input
+      type="checkbox"
+      id="aadhaarConsent"
+      name="aadhaarConsent"
+      required
+    />
+    <label for="aadhaarConsent">
+      I consent to upload my Aadhaar for booking verification.
+    </label>
+  </div>
+
+  <!-- PAY ADVANCE -->
+  <div class="form-group">
+    <button
+      type="button"
+      id="payAdvanceBtn"
+      class="btn"
+      disabled
+    >
+      Pay ₹2000 Advance
+    </button>
+  </div>
+
+  <!-- UPI QR -->
+  <div id="upiContainer" style="margin-top:12px;"></div>
+
+  <!-- PAYMENT PROOF -->
+  <div id="proofSection" style="display:none;margin-top:12px;">
+    <label for="paymentProofFile">Upload payment proof</label>
+    <input
+      type="file"
+      id="paymentProofFile"
+      name="paymentProofFile"
+      accept="image/*"
+    />
+
+    <label for="paymentTxnId">Transaction ID (optional)</label>
+    <input
+      type="text"
+      id="paymentTxnId"
+      name="paymentTxnId"
+      placeholder="Transaction ID"
+    />
+
+    <button
+      type="button"
+      id="submitProofBtn"
+      class="btn"
+    >
+      Submit Proof
+    </button>
+  </div>
+
+  <!-- REQUEST BOOKING -->
+  <div class="form-group">
+    <button
+      type="button"
+      id="requestBookingBtn"
+      class="btn primary-btn"
+      disabled
+    >
+      Request Booking
+    </button>
+    <span
+      id="paymentStatus"
+      style="margin-left:8px;color:var(--text-muted);"
+    ></span>
+  </div>
+
+  <!-- NOTIFICATION -->
+  <div
+    id="notificationMessage"
+    class="notification-message"
+    style="display:none;"
+  ></div>
+
+</form>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 The Night Garden Stay</p>
+</footer>
+
+<script src="../js/leads.js"></script>
+  <!-- UPI / dev configuration: override these if needed -->
+  <script>
+    // local QR image you added
+    window.NIGHT_UPI_QR = '/assets/upi-qr.png';
+    // default UPI details (update if you have a different VPA)
+    window.NIGHT_UPI_VPA = 'thenightgarden@upi';
+    window.NIGHT_UPI_NAME = 'The Night Garden Stay';
+    // Set to true to simulate uploads/payments without server calls
+    window.NIGHT_DEV_MODE = window.NIGHT_DEV_MODE || false;
+  </script>
+  <script src="../js/booking.js"></script>
+<script>
+  if (typeof saveLead === 'function') saveLead("Booking Page");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("nightgarden_public");
+</script>
+
+
+</body>
+</html>

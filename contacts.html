@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | The Night Garden Stay</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="../css/public.css" />
+  <link rel="stylesheet" href="../css/contacts.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <!-- page scripts moved to bottom to avoid DOM timing issues -->
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 🌙 HEADER -->
+  <header class="header">
+    <div class="logo">The Night Garden Stay</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="availability.html">Availability</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="contacts.html" class="active">Contact</a>
+  <a href="booking.html" class="btn">Book Now</a>
+    </nav>
+  </header>
+
+  <!-- 📞 CONTACT SECTION -->
+  <section class="contact-section">
+    <h1>Get in Touch</h1>
+    <p class="subtitle">
+      Have a question or planning a stay? We’d love to hear from you.
+    </p>
+
+    <div class="contact-wrapper">
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Night Garden Stay</h2>
+        <p>🌿 A peaceful farmhouse retreat surrounded by nature.</p>
+
+        <ul>
+          <li><strong>📍 Location:</strong> Near Ramoji Film City,Anajpur,Telangana-501512</li>
+          <li><strong>📞 Phone:</strong> +91 6303091715,+91 7981170843</li>
+          <li><strong>📧 Email:</strong> thenightgardenstay@gmail.com</li>
+        </ul>
+
+        <!-- Map -->
+        <h3>📍 Our Location</h3>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3809.8257875532304!2d78.7002752!3d17.2756613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb0b1fb278ed8f%3A0x20c34f20a1ae8730!2sThe%20Night%20Garden!5e0!3m2!1sen!2sin!4v1766318759617!5m2!1sen!2sin"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        width="100%"
+        height="350"
+        style="border:0; border-radius:10px;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+
+
+        <p class="note">
+          We respect your privacy. No promotional spam, ever.
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+
+        <form id="contactForm">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="primary-btn">Send Message</button>
+        </form>
+
+        <p class="privacy-note">
+          Your details are used only to respond to your enquiry.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🌿 FOOTER -->
+  <footer class="footer">
+    <p>© 2025 The Night Garden Stay · Crafted with Calm</p>
+  </footer>
+
+  <!-- Page JS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // initialize emailjs with public key if you have one (replace with your own)
+    try { emailjs.init("nightgarden_public"); } catch (e) { /* ignore if not available */ }
+  </script>
+  <script src="../js/contacts.js"></script>
+  <script src="../js/leads.js"></script>
+  <script>
+    // record a friendly lead name for this page
+    if (typeof saveLead === "function") saveLead("Contact Page");
+  </script>
+
+</body>
+</html>

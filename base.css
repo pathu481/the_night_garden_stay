@@ -1,0 +1,53 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg-dark: #0b1d1a;        /* dark night background */
+  --bg-card: #122826;        /* card / section background */
+  --primary: #1f7a6b;        /* links / buttons */
+  --accent: #d4af37;         /* gold highlights */
+  --text-light: #e0e0e0;     /* body text */
+  --text-heading: #f3d07f;   /* headings */
+  --text-muted: #b0b0b0;     /* muted / notes */
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+
+
+/* ===== GLOBAL ===== */
+h1, h2, h3 {
+  color: var(--text-heading);
+}
+
+p, li {
+  color: var(--text-light);
+}
+
+small, .privacy, .note {
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover, .btn:hover {
+  color: #000;
+}
+h1, h2 {
+  background: linear-gradient(90deg, #f3d07f, #d4af37);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  line-height: 1.6;
+}
+/* ===== HEADER ===== */

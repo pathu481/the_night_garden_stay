@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bookings Management | Admin</title>
+  <link rel="stylesheet" href="../css/public.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="logo">Bookings Management</div>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </nav>
+</header>
+
+<section class="admin-content">
+  <h2>All Bookings</h2>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dates</th>
+        <th>Guests</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookingTable"></tbody>
+  </table>
+</section>
+
+<script src="bookings.js"></script>
+</body>
+</html>

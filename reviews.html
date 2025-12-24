@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews | The Night Garden Stay</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/public.css" />
+  <link rel="stylesheet" href="../css/reviews.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 🌙 HEADER -->
+  <header class="header">
+    <div class="logo">The Night Garden Stay</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="availability.html">Availability</a>
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="contacts.html">Contact</a>
+      <a href="booking.html" class="btn">Book Now</a>
+    </nav>
+  </header>
+
+  <!-- ⭐ REVIEWS SECTION -->
+  <section class="reviews-section">
+    <h1>Guest Experiences</h1>
+    <p class="subtitle">
+      Real moments, real memories from our guests.
+    </p>
+
+    <!-- Review Cards -->
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">
+          “Absolutely peaceful. The night ambience and garden lights were magical.”
+        </p>
+        <span class="reviewer">— Suresh, Hyderabad</span>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">
+          “Perfect weekend escape. Clean rooms, calm environment.”
+        </p>
+        <span class="reviewer">— Ananya, Bangalore</span>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">
+          “Best farmhouse stay I’ve experienced. Felt premium and private.”
+        </p>
+        <span class="reviewer">— Rahul, Chennai</span>
+      </div>
+
+    </div>
+
+    <!-- ✍️ ADD REVIEW -->
+    <div class="add-review">
+      <h2>Leave a Review</h2>
+
+      <form id="reviewForm">
+        <input type="text" placeholder="Your Name" required />
+        <select required>
+          <option value="">Rating</option>
+          <option>★★★★★</option>
+          <option>★★★★☆</option>
+          <option>★★★☆☆</option>
+          <option>★★☆☆☆</option>
+          <option>★☆☆☆☆</option>
+        </select>
+        <textarea placeholder="Share your experience..." required></textarea>
+        <button type="submit" class="primary-btn">Submit Review</button>
+      </form>
+
+      <p id="reviewMsg"></p>
+
+      <p class="privacy-note">
+        Reviews are moderated to maintain quality and authenticity.
+      </p>
+    </div>
+  </section>
+
+  <!-- 🌿 FOOTER -->
+  <footer class="footer">
+    <p>© 2025 The Night Garden Stay · Crafted with Calm</p>
+  </footer>
+
+  <!-- Page JS -->
+  <script src="../js/storage.js"></script>
+  <script src="../js/reviews.js"></script>
+
+</body>
+</html>
